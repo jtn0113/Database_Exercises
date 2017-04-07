@@ -39,5 +39,4 @@ WHERE dept_no IN (
 		SELECT emp_no
 		FROM employees
 		WHERE gender = 'F')
-	AND to_date > now()
 );
