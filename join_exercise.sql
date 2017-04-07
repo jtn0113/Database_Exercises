@@ -70,6 +70,45 @@ WHERE dept_emp.to_date > now()
 	AND dept_manager.to_date > now()
 
 
+BONUS Historic average salary of workers M vs. F.
+
+SELECT employees.gender, AVG(salaries.salary)
+FROM employees
+JOIN salaries 
+	ON salaries.emp_no = employees.emp_no
+GROUP BY employees.gender;
+
+
+BONUS Current average salary of workers M vs. F.
+
+SELECT employees.gender, AVG(salaries.salary)
+FROM employees
+JOIN salaries 
+	ON salaries.emp_no = employees.emp_no
+WHERE salaries.to_date > now()
+GROUP BY employees.gender;
+
+
+BONUS Current count of M vs F managers
+
+SELECT employees.gender, count(employees.gender)
+FROM employees
+JOIN dept_manager ON dept_manager.emp_no = employees.emp_no
+WHERE dept_manager.to_date > now()
+GROUP BY employees.gender;
+
+
+BONUS Current count of M vs F Engineers
+
+SELECT employees.gender, count(employees.gender)
+FROM employees
+JOIN titles ON titles.emp_no = employees.emp_no
+WHERE titles.title = 'Engineer'
+	AND titles.to_date > now()
+GROUP BY employees.gender;
+
+
+
 
 
 Count per job title
